@@ -1,0 +1,219 @@
+@model ContactRequestDto
+
+@{
+    ViewBag.Title = "Add Contact";
+    ViewBag.CurrentUrl = "~/contacts";
+}
+
+<div class="flex-1 mb">
+
+    <div class="text-grey">
+        <span lang="en">Contacts</span>
+        <span lang="ar">جهات الاتصال</span>
+        <span lang="en">›</span>
+        <span lang="ar">‹</span>
+        <span lang="en">Add</span>
+        <span lang="ar">إضافة</span>
+    </div>
+
+</div>
+
+<a asp-controller="Contacts"
+   asp-action="Index"
+   class="link-hover no-underline">
+    <span lang="en">← Back to Contacts</span>
+    <span lang="ar">→ العودة إلى جهات الاتصال</span>
+</a>
+
+<br/>
+<br/>
+
+<div class="page-form">
+
+    <h1><span lang="en">Add Contact</span><span lang="ar">إضافة جهة اتصال</span></h1>
+
+    <form asp-controller="Contacts"
+          asp-action="Create"
+          method="post">
+
+        <div class="form-field flex">
+
+            <div class="w-25">
+                <label asp-for="FirstName"
+                       class="form-label">
+                    <span lang="en">First Name</span>
+                    <span lang="ar">الاسم الأول</span>
+                </label>
+            </div>
+
+            <div class="flex-1">
+                <input asp-for="FirstName"
+                       class="form-input"/>
+
+                <span asp-validation-for="FirstName"
+                      class="text-red">
+                </span>
+            </div>
+
+        </div>
+
+
+        <div class="form-field flex">
+
+            <div class="w-25">
+                <label asp-for="LastName"
+                       class="form-label">
+                    <span lang="en">Last Name</span>
+                    <span lang="ar">الاسم الأخير</span>
+                </label>
+            </div>
+
+            <div class="flex-1">
+                <input asp-for="LastName"
+                       class="form-input"/>
+
+                <span asp-validation-for="LastName"
+                      class="text-red">
+                </span>
+            </div>
+
+        </div>
+
+
+        <div class="form-field flex">
+
+            <div class="w-25">
+                <label asp-for="Email"
+                       class="form-label">
+                    <span lang="en">Email</span>
+                    <span lang="ar">البريد الإلكتروني</span>
+                </label>
+            </div>
+
+            <div class="flex-1">
+                <input asp-for="Email"
+                       type="email"
+                       class="form-input"/>
+
+                <span asp-validation-for="Email"
+                      class="text-red">
+                </span>
+            </div>
+
+        </div>
+
+
+        <div class="form-field flex">
+
+            <div class="w-25">
+                <label asp-for="PhoneNumber"
+                       class="form-label">
+                    <span lang="en">Phone Number</span>
+                    <span lang="ar">رقم الهاتف</span>
+                </label>
+            </div>
+
+            <div class="flex-1">
+                <input asp-for="PhoneNumber"
+                       class="form-input"/>
+
+                <span asp-validation-for="PhoneNumber"
+                      class="text-red">
+                </span>
+            </div>
+
+        </div>
+
+
+        <div class="form-field flex">
+
+            <div class="w-25">
+                <label asp-for="CompanyName"
+                       class="form-label">
+                    <span lang="en">Company</span>
+                    <span lang="ar">الشركة</span>
+                </label>
+            </div>
+
+            <div class="flex-1">
+                <input asp-for="CompanyName"
+                       class="form-input"/>
+
+                <span asp-validation-for="CompanyName"
+                      class="text-red">
+                </span>
+            </div>
+
+        </div>
+
+
+        <div class="form-field">
+            <div class="w-25">
+                <label asp-for="Address"
+                       class="form-label">
+                    <span lang="en">Address</span>
+                    <span lang="ar">العنوان</span>
+                </label>
+            </div>
+
+            <div class="flex-1">
+                <textarea asp-for="Address"
+                          class="form-input"></textarea>
+
+                <span asp-validation-for="Address"
+                      class="text-red">
+                </span>
+            </div>
+
+        </div>
+
+
+        <div class="form-field">
+            <div class="w-25">
+
+                <label asp-for="Notes"
+                       class="form-label">
+                    <span lang="en">Notes</span>
+                    <span lang="ar">ملاحظات</span>
+                </label>
+            </div>
+
+            <div class="flex-1">
+                
+                <textarea asp-for="Notes"
+                          class="form-input"></textarea>
+
+                <span asp-validation-for="Notes"
+                      class="text-red">
+                </span>
+            </div>
+
+        </div>
+
+
+        <div class="mt">
+
+            <button type="submit"
+                    class="button button-blue-back">
+                <span lang="en">Add Contact</span>
+                <span lang="ar">إضافة جهة اتصال</span>
+            </button>
+
+            <a asp-controller="Contacts"
+               asp-action="Index"
+               onclick="if(document.referrer) { history.back(); return false; } "
+               class="button-link button-gray-back">
+                <span lang="en">Cancel</span>
+                <span lang="ar">إلغاء</span>
+            </a>
+
+        </div>
+
+    </form>
+
+</div>
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial"/>
+}

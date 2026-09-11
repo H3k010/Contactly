@@ -1,0 +1,73 @@
+@model ChangePreferencesDto
+
+<div class="settings-item">
+
+    <div class="settings-item-content">
+
+        <h3><span lang="en">Contacts per page</span>
+            <span lang="ar">جهات الاتصال لكل صفحة</span>
+        </h3>
+
+        <p class="text-grey">
+            <span lang="en">Choose how many contacts are displayed at once</span>
+            <span lang="ar">اختر عدد جهات الاتصال المعروضة في كل مرة</span>
+        </p>
+
+    </div>
+
+    <div class="settings-item-control">
+
+        <select asp-for="UserPreferences.PageSize"
+                asp-items="Html.GetEnumSelectList<PageSizeOptions>()"
+                class="settings-select">
+        </select>
+
+    </div>
+
+</div>
+
+
+<div class="settings-divider"></div>
+
+
+<div class="settings-item">
+
+    <div class="settings-item-content">
+
+        <h3><span lang="en">Default sorting</span>
+            <span lang="ar">الترتيب الافتراضي</span>
+        </h3>
+
+        <p class="text-grey">
+            <span lang="en">Choose how your contacts are sorted by default</span>
+            <span lang="ar">اختر كيفية ترتيب جهات الاتصال بشكل افتراضي</span>
+        </p>
+
+    </div>
+
+    <div class="settings-sort-controls">
+
+        <select asp-for="UserPreferences.SortBy"
+                asp-items="Html.GetEnumSelectList<SortByOptions>()"
+                class="settings-select">
+        </select>
+
+        <select asp-for="UserPreferences.SortOrder"
+                asp-items="Html.GetEnumSelectList<SortOrderOptions>()"
+                class="settings-select">
+        </select>
+        
+    </div>
+
+</div>
+
+
+<div class="profile-settings-actions">
+
+    <button type="submit"
+            class="button button-blue-back">
+        <span lang="en">Save Preferences</span>
+        <span lang="ar">حفظ التفضيلات</span>
+    </button>
+
+</div>

@@ -1,0 +1,53 @@
+@{
+    if (ViewBag.CurrentSortBy == ViewBag.ColumnName &&
+        ViewBag.CurrentSortOrder == nameof(SortOrderOptions.ASC))
+    {
+        <th>
+            <a asp-controller="Contacts"
+               asp-action="Index"
+               asp-route-searchBy="@ViewBag.CurrentSearchBy"
+               asp-route-searchString="@ViewBag.CurrentSearchString"
+               asp-route-sortBy="@ViewBag.ColumnName"
+               asp-route-sortOrder="DESC">
+
+                @ViewBag.DisplayName
+
+            </a>
+
+            <span class="text-grey">↑</span>
+        </th>
+    }
+    else if (ViewBag.CurrentSortBy == ViewBag.ColumnName &&
+             ViewBag.CurrentSortOrder == nameof(SortOrderOptions.DESC))
+    {
+        <th>
+            <a asp-controller="Contacts"
+               asp-action="Index"
+               asp-route-searchBy="@ViewBag.CurrentSearchBy"
+               asp-route-searchString="@ViewBag.CurrentSearchString"
+               asp-route-sortBy="@ViewBag.ColumnName"
+               asp-route-sortOrder="ASC">
+
+                @ViewBag.DisplayName
+
+            </a>
+
+            <span class="text-grey">↓</span>
+        </th>
+    }
+    else
+    {
+        <th>
+            <a asp-controller="Contacts"
+               asp-action="Index"
+               asp-route-searchBy="@ViewBag.CurrentSearchBy"
+               asp-route-searchString="@ViewBag.CurrentSearchString"
+               asp-route-sortBy="@ViewBag.ColumnName"
+               asp-route-sortOrder="ASC">
+
+                @ViewBag.DisplayName
+
+            </a>
+        </th>
+    }
+}

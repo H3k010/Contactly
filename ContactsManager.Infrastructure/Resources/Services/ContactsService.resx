@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+            
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    
+    <data name="CSVContactNotFound" xml:space="preserve">
+        <value>No contacts found in the uploaded file.</value>
+    </data>
+    
+    <data name="CSVHeaderDoesNotMatch" xml:space="preserve">
+        <value>CSV Error: File headers do not match the expected format.</value>
+    </data>
+    
+    <data name="CSVInvalidFormat" xml:space="preserve">
+        <value>Invalid CSV format in the uploaded file.</value>
+    </data>
+    
+    <data name="CSVErrors" xml:space="preserve">
+        <value>An error occurred while reading the CSV file.</value>
+    </data>
+    
+    <data name="CSVSuccess" xml:space="preserve">
+        <value>File uploaded successfully!</value>
+    </data> 
+    
+    <data name="JSONContactNotFound" xml:space="preserve">
+        <value>No contacts found in the uploaded file.</value>
+    </data>
+        
+    <data name="JSONInvalidFormat" xml:space="preserve">
+        <value>Invalid JSON format in the uploaded file.</value>
+    </data>
+    
+    <data name="JSONErrors" xml:space="preserve">
+        <value>An error occurred while reading the JSON file.</value>
+    </data>
+    
+    <data name="JSONSuccess" xml:space="preserve">
+        <value>File uploaded successfully!</value>
+    </data>
+</root>

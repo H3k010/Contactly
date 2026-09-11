@@ -1,0 +1,310 @@
+@model ContactsViewModel
+
+@{
+    ViewBag.Title = "Contacts";
+    ViewBag.CurrentUrl = "~/contacts";
+}
+
+<form asp-controller="Contacts"
+      asp-action="Index"
+      method="get">
+
+    <div class="flex mb action-row">
+
+        <div class="flex-1">
+            <div class="text-grey">
+                <h2><span lang="en">Manage your contacts</span><span lang="ar">إدارة جهات الاتصال</span></h2>
+            </div>
+        </div>
+
+        <div>
+
+            <a asp-controller="Contacts"
+               asp-action="Create"
+               class="button-link button-blue-back">
+                <i class="fa-solid fa-plus"></i>
+                <span lang="en">Add Contact</span><span lang="ar">إضافة جهة اتصال</span>
+            </a>
+
+            <a asp-controller="Contacts"
+               asp-action="Import"
+               class="link-hover no-underline">
+                <span lang="en">Import</span><span lang="ar">استيراد</span>
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <div class="table-container">
+
+        <!-- Header -->
+        <div class="flex">
+
+            <div class="flex-1">
+
+                <h1>
+                    <span lang="en">Contacts</span>
+                    <span lang="ar">جهات الاتصال</span>
+
+                    @if (Model.TotalContactsCount != 0)
+                    {
+                        <span lang="en" class="text-grey">
+                            (@Model.TotalContactsCount)
+                        </span>
+                        <span lang="ar" class="text-grey">
+                            (@Model.TotalContactsCount.ToArabicNumerals())
+                        </span>
+                    }
+                </h1>
+
+            </div>
+
+            @if (Model.Contacts.Any())
+            {
+                <div>
+                    @await Html.PartialAsync("_ExportDetailsElement")
+                </div>
+            }
+
+        </div>
+
+        <!-- Search -->
+        <div class="flex">
+
+            <div class="flex-3 search-controls">
+
+                <label for="search" class="search-form-label">
+                    <span lang="en">Search contacts</span>
+                    <span lang="ar">بحث في جهات الاتصال</span>
+                </label>
+
+                <select id="searchBy"
+                        class="search-dropdown"
+                        name="searchBy"
+                        style="width: 200px">
+
+                    @foreach (var field in ViewBag.SearchFields)
+                    {
+                        var fieldAr = ViewBag.SearchFieldsAr[field.Key];
+
+                        if (field.Key == ViewBag.CurrentSearchBy)
+                        {
+                            <option value="@field.Key"
+                                    data-en="@field.Value"
+                                    data-ar="@fieldAr"
+                                    selected>
+                                @field.Value
+                            </option>
+                        }
+                        else
+                        {
+                            <option value="@field.Key"
+                                    data-en="@field.Value"
+                                    data-ar="@fieldAr">
+                                @field.Value
+                            </option>
+                        }
+                    }
+
+                </select>
+
+                <input type="search"
+                       id="search"
+                       class="search-text"
+                       name="searchString"
+                       value="@ViewBag.CurrentSearchString"
+                       style="width: 300px"
+                       data-placeholder-en="@(
+                                            Model.FilteredContactsCount == 0
+                                                ? "No contacts to search"
+                                                : Model.FilteredContactsCount == 1
+                                                    ? "Search in 1 result"
+                                                    : $"Search in {Model.FilteredContactsCount} results"
+                                            )"
+                       data-placeholder-ar="@(
+                                            Model.FilteredContactsCount == 0
+                                                ? "لا يوجد جهات اتصال للبحث"
+                                                : Model.FilteredContactsCount == 1
+                                                    ? "البحث فى عنصر واحد"
+                                                    : $"البحث فى {Model.FilteredContactsCount.ToArabicNumerals()} عنصر"
+                                            )"/>
+
+                <button type="submit"
+                        class="search-button">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <span lang="en">Search</span>
+                    <span lang="ar">بحث</span>
+                </button>
+
+                <a asp-controller="Contacts"
+                   asp-action="Index"
+                   class="link-hover no-underline">
+                    <span lang="en">Clear</span>
+                    <span lang="ar">مسح</span>
+                </a>
+
+            </div>
+
+        </div>
+
+        <!-- Table -->
+        <table class="table w-100 mt">
+
+            <colgroup>
+                <col style="width: 5%;">
+                <col style="width: 13%;">
+                <col style="width: 20%;">
+                <col style="width: 13%;">
+                <col style="width: 16%;">
+                <col style="width: 20%;">
+                <col style="width: 13%;">
+            </colgroup>
+
+
+            @if (Model.Contacts.Any())
+            {
+                <thead>
+                <tr>
+
+                    @await Html.PartialAsync(
+                        "_GridColumnHeader",
+                        new ViewDataDictionary(ViewData)
+                        {
+                            { "ColumnName", nameof(ContactResponseDto.CreatedAt) },
+                            { "DisplayName", ViewBag.LastAddedIcon }
+                        })
+
+                    @await Html.PartialAsync(
+                        "_GridColumnHeader",
+                        new ViewDataDictionary(ViewData)
+                        {
+                            { "ColumnName", nameof(ContactResponseDto.FullName) },
+                            { "DisplayName", ViewBag.Name }
+                        })
+
+
+                    @await Html.PartialAsync(
+                        "_GridColumnHeader",
+                        new ViewDataDictionary(ViewData)
+                        {
+                            { "ColumnName", nameof(ContactResponseDto.Email) },
+                            { "DisplayName", ViewBag.Email }
+                        })
+
+                    <th>@ViewBag.Phone</th>
+
+                    @await Html.PartialAsync(
+                        "_GridColumnHeader",
+                        new ViewDataDictionary(ViewData)
+                        {
+                            { "ColumnName", nameof(ContactResponseDto.CompanyName) },
+                            { "DisplayName", ViewBag.Company }
+                        })
+
+                    @await Html.PartialAsync(
+                        "_GridColumnHeader",
+                        new ViewDataDictionary(ViewData)
+                        {
+                            { "ColumnName", nameof(ContactResponseDto.Address) },
+                            { "DisplayName", ViewBag.Address }
+                        })
+
+                    <th><span lang="en">Options</span><span lang="ar">الخيارات</span></th>
+
+                </tr>
+                </thead>
+            }
+
+
+            <tbody>
+
+            @if (!Model.Contacts.Any())
+            {
+                <tr>
+                    <td colspan="7"
+                        class="text-center medium-text text-grey">
+
+                        @if (Model.TotalContactsCount == 0)
+                        {
+                            <span lang="en">
+                                Add your first contact to get started.
+                            </span>
+                            <span lang="ar">
+                                أضف جهه اتصال أولى لبدء الاستخدام.
+                            </span>
+                        }
+                        else
+                        {
+                            <span lang="en">
+                                No contacts match your search.
+                            </span>
+                            <span lang="ar">
+                                لا توجد جهات اتصال تطابق بحثك.
+                            </span>
+                        }
+
+                    </td>
+                </tr>
+            }
+            else
+            {
+                foreach (var contact in Model.Contacts)
+                {
+                    <tr>
+
+                        <td></td>
+
+                        <td style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                            <strong>
+                                @contact.FullName
+                            </strong>
+                        </td>
+
+                        <td style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                            @contact.Email
+                        </td>
+
+                        <td style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                            @contact.PhoneNumber
+                        </td>
+
+                        <td style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                            @contact.CompanyName
+                        </td>
+
+                        <td style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                            @contact.Address
+                        </td>
+
+                        <td style="white-space: nowrap;">
+
+                            <a asp-controller="Contacts"
+                               asp-action="Details"
+                               asp-route-id="@contact.Id"
+                               class="button-link button-green-back">
+                                <span lang="en">Details</span>
+                                <span lang="ar">التفاصيل</span>
+                            </a>
+
+                            @await Html.PartialAsync("_ExpandOptions", contact)
+
+                        </td>
+
+                    </tr>
+                }
+            }
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</form>
+<br>
+
+<div>
+    @await Html.PartialAsync("_PagePagination", model: Model)
+</div>

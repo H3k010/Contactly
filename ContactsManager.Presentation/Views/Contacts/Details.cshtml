@@ -1,0 +1,168 @@
+@model ContactResponseDto
+
+@{
+    ViewBag.Title = "Contact Details";
+    ViewBag.CurrentUrl = "~/contacts";
+}
+
+<div class="flex-1 mb">
+
+    <div class="text-grey">
+
+        <span lang="en">Contacts</span>
+        <span lang="ar">جهات الاتصال</span>
+        <span lang="en">›</span>
+        <span lang="ar">‹</span>
+        <span lang="en">Details</span>
+        <span lang="ar">التفاصيل</span>
+
+    </div>
+
+</div>
+
+
+<a asp-controller="Contacts"
+   asp-action="Index"
+   class="link-hover no-underline">
+    <span lang="en">← Back to Contacts</span>
+    <span lang="ar">→ العودة إلى جهات الاتصال</span>
+</a>
+
+<br/>
+<br/>
+
+
+<div class="page-form">
+
+    <h1><span lang="en">Contact Details</span><span lang="ar">تفاصيل جهة الاتصال</span></h1>
+
+
+    <div class="details-field">
+
+        <div class="details-label">
+            <span lang="en">Name</span>
+            <span lang="ar">الاسم</span>
+        </div>
+
+        <div class="details-value">
+            @Model.FullName
+        </div>
+
+    </div>
+
+
+    <div class="details-field">
+
+        <div class="details-label">
+            <span lang="en">Email</span>
+            <span lang="ar">البريد الإلكتروني</span>
+        </div>
+
+        <div class="details-value">
+            @Model.Email
+        </div>
+
+    </div>
+
+
+    <div class="details-field">
+
+        <div class="details-label">
+            <span lang="en">Phone Number</span>
+            <span lang="ar">رقم الهاتف</span>
+        </div>
+
+        <div class="details-value">
+            @Model.PhoneNumber
+        </div>
+
+    </div>
+
+
+    <div class="details-field">
+
+        <div class="details-label">
+            <span lang="en">Company Name</span>
+            <span lang="ar">اسم الشركة</span>
+        </div>
+
+        <div class="details-value">
+            @Model.CompanyName
+        </div>
+
+    </div>
+
+
+    <div class="details-field">
+
+        <div class="details-label">
+            <span lang="en">Address</span>
+            <span lang="ar">العنوان</span>
+        </div>
+
+        <div class="details-value">
+            @Model.Address
+        </div>
+
+    </div>
+
+
+    <div class="details-field">
+
+        <div class="details-label">
+            <span lang="en">Notes</span>
+            <span lang="ar">ملاحظات</span>
+        </div>
+
+        <div class="details-value">
+            @Model.Notes
+        </div>
+
+    </div>
+
+
+    <div class="details-field">
+
+        <div class="details-label">
+            <span lang="en">Created At</span>
+            <span lang="ar">تم الإنشاء في</span>
+        </div>
+
+        <div class="details-value">
+            @Model.CreatedAt.ToString("yyyy-MM-dd HH:mm")
+        </div>
+
+    </div>
+
+
+    <div class="details-actions action-row">
+
+        <a asp-controller="Contacts"
+           asp-action="Edit"
+           asp-route-id="@Model.Id"
+           class="button-link button-blue-back">
+            <i class="fa-solid fa-pen"></i>
+            <span lang="en">Edit</span>
+            <span lang="ar">تعديل</span>
+        </a>
+
+        <a asp-controller="Contacts"
+           asp-action="Delete"
+           asp-route-id="@Model.Id"
+           class="button-link button-red-back">
+            <i class="fa-solid fa-trash"></i>
+            <span lang="en">Delete</span>
+            <span lang="ar">حذف</span>
+        </a>
+
+        <a asp-controller="Contacts"
+           asp-action="Index"
+           onclick="if(document.referrer) { history.back(); return false; } "
+           class="button-link button-gray-back">
+            <span lang="en">Back</span>
+            <span lang="ar">رجوع</span>
+        </a>
+
+    </div>
+
+</div>

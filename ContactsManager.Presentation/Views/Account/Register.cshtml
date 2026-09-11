@@ -1,0 +1,109 @@
+@model RegisterDto
+@{
+ ViewBag.Title = "Register";
+ ViewBag.CurrentUrl = "~/Account/Register";
+}
+
+<div class="form-container">
+
+ <h2 class="text-large"><span lang="en">Register</span><span lang="ar">تسجيل</span></h2>
+ 
+ @if (TempData["EmailSent"] as bool? == true)
+ {
+  <div class="text-blue text-center">@TempData["RegisterMessage"]</div>
+ }
+
+ <form asp-controller="Account" asp-action="Register" method="post">
+
+  @*UserName*@
+  <div class="form-field flex">
+   <div class="w-25">
+    <label asp-for="UserName" class="form-label pt">
+     <span lang="en">Name</span><span lang="ar">الاسم</span>
+    </label>
+   </div>
+   <div class="flex-1">
+    <input asp-for="UserName" class="form-input"/>
+    <span asp-validation-for="UserName" class="text-red"></span>
+   </div>
+  </div>
+
+  @*Email*@
+  <div class="form-field flex">
+   <div class="w-25">
+    <label asp-for="Email" class="form-label pt">
+     <span lang="en">Email</span><span lang="ar">البريد الإلكترونى</span>
+    </label>
+   </div>
+   <div class="flex-1">
+    <input asp-for="Email" class="form-input"/>
+    <span asp-validation-for="Email" class="text-red"></span>
+   </div>
+  </div>
+
+  @*Password*@
+  <div class="form-field flex">
+   <div class="w-25">
+    <label asp-for="Password" class="form-label pt">
+     <span lang="en">Password</span><span lang="ar">كلمة المرور</span>
+    </label>
+   </div>
+   <div class="flex-1">
+    <input asp-for="Password" class="form-input"/>
+    <span asp-validation-for="Password" class="text-red"></span>
+   </div>
+  </div>
+
+  @*ConfirmPassword*@
+  <div class="form-field flex">
+   <div class="w-25">
+    <label asp-for="ConfirmPassword" class="form-label pt">
+     <span lang="en">Confirm Password</span><span lang="ar">تأكيد كلمة المرور</span>
+    </label>
+   </div>
+   <div class="flex-1">
+    <input asp-for="ConfirmPassword" class="form-input"/>
+    <span asp-validation-for="ConfirmPassword" class="text-red"></span>
+   </div>
+  </div>
+
+  @*Phone*@
+  <div class="form-field flex">
+   <div class="w-25">
+    <label asp-for="Phone" class="form-label pt">
+     <span lang="en">Phone</span><span lang="ar">الهاتف</span>
+    </label>
+   </div>
+   <div class="flex-1">
+    <input asp-for="Phone" class="form-input"/>
+    <span asp-validation-for="Phone" class="text-red"></span>
+   </div>
+  </div>
+
+  @*Register button*@
+  <div class="form-field flex">
+   <div class="w-25"></div>
+   <div class="flex-1">
+
+    <button class="button button-green-back" type="submit">
+     <span lang="en">Register</span><span lang="ar">تسجيل</span>
+    </button>
+
+    <span style=" margin-left: 100px;">
+     <span lang="en">Already Registered?</span>
+     <span lang="ar">هل أنت مسجل بالفعل؟</span>
+     <a asp-action="Login" asp-controller="Account" class="link-hover no-underline">
+      <span lang="en">Login</span><span lang="ar">تسجيل الدخول</span>
+     </a>
+    </span>
+    <div asp-validation-summary="ModelOnly" class="text-red"></div>
+   </div>
+  </div>
+
+ </form>
+</div>
+
+@section scripts
+{
+ <partial name="_ValidationScriptsPartial"/>
+}

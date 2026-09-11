@@ -1,0 +1,149 @@
+@model ProfileSettingsViewModel
+
+@{
+    ViewBag.Title = "Profile Settings";
+    ViewBag.CurrentUrl = "~/Settings";
+}
+
+<div class="profile-breadcrumb text-grey">
+    <span lang="en">Settings</span>
+    <span lang="ar">الإعدادات</span>
+    <span lang="en">›</span>
+    <span lang="ar">‹</span>
+    <span lang="en">Profile Settings</span>
+    <span lang="ar">إعدادات الملف الشخصي</span>
+</div>
+
+<!-- Back -->
+<div class="profile-settings-back">
+
+    <a asp-controller="Home"
+       asp-action="Settings"
+       class="link-hover no-underline">
+        <span lang="en">← Back to Settings</span>
+        <span lang="ar">→ العودة إلى الإعدادات</span>
+    </a>
+
+</div>
+
+<div class="profile-settings-page">
+
+    <div class="profile-settings-header">
+
+        <h1><span lang="en">Profile Settings</span>
+            <span lang="ar">إعدادات الملف الشخصي</span></h1>
+
+        <p class="text-grey">
+            <span lang="en">Manage your personal information and contact preferences</span>
+            <span lang="ar">إدارة المعلومات الشخصية وتفضيلات الاتصال</span>
+        </p>
+
+    </div>
+
+    <!-- Display Name -->
+    <section class="profile-settings-section">
+
+        <div class="profile-settings-section-header">
+            <span lang="en">PROFILE</span>
+            <span lang="ar">الملف الشخصي</span>
+        </div>
+
+        <form asp-controller="Account"
+              asp-action="ChangeName"
+              method="post">
+
+            <div class="profile-settings-field">
+
+                <partial name="_ChangeNameForm" model="Model.Name"/>
+                
+            </div>
+
+        </form>
+
+    </section>
+
+
+    <!-- Email -->
+    <section class="profile-settings-section">
+
+        <div class="profile-settings-section-header">
+            <span lang="en">EMAIL</span>
+            <span lang="ar">البريد الإلكتروني</span>
+        </div>
+
+        <form asp-controller="Account"
+              asp-action="ChangeEmail"
+              method="post">
+
+            <div class="profile-settings-field">
+
+                <partial name="_ChangeEmailForm" model="Model.Email"/>
+
+            </div>
+            
+        </form>
+
+    </section>
+
+
+    <!-- Phone -->
+    <section class="profile-settings-section">
+
+        <div class="profile-settings-section-header">
+            <span lang="en">PHONE</span>
+            <span lang="ar">الهاتف</span>
+        </div>
+
+        <form asp-controller="Account"
+              asp-action="ChangePhone"
+              method="post">
+
+            <div class="profile-settings-field">
+
+                <partial name="_ChangePhoneForm" model="Model.Phone"/>
+
+            </div>
+
+        </form>
+
+    </section>
+
+
+    <!-- Contact Preferences -->
+    <section class="profile-settings-section">
+
+        <div class="profile-settings-section-header">
+            <span lang="en">CONTACT PREFERENCES</span>
+            <span lang="ar">تفضيلات الاتصال</span>
+        </div>
+
+        <form asp-controller="Account"
+              asp-action="ChangePreferences"
+              method="post">
+
+            <partial name="_ChangePreferencesForm" model="Model.UserPreferences"/>
+
+        </form>
+
+    </section>
+
+
+    <!-- Back -->
+    <div class="profile-settings-footer">
+
+        <a asp-controller="Home"
+           asp-action="Settings"
+           class="button-link button-gray-back">
+            <span lang="en">Back</span>
+            <span lang="ar">العودة</span>
+        </a>
+
+    </div>
+
+</div>
+
+<partial name="_ConfirmPasswordModal" model="Model.ConfirmPassword"/>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial"/>
+}

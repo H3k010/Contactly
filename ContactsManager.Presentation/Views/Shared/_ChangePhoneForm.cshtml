@@ -1,0 +1,37 @@
+@model ChangePhoneDto
+
+<div class="profile-settings-field-content">
+
+    <label asp-for="PhoneNumber"
+           class="form-label">
+        <span lang="en">Phone Number</span>
+        <span lang="ar">رقم الهاتف</span>
+    </label>
+
+    <p class="text-grey">
+        <span lang="en">The phone number associated with your account</span>
+        <span lang="ar">رقم الهاتف المرتبط بحسابك</span>
+    </p>
+
+</div>
+
+<div class="profile-settings-field-control">
+
+    <div class="profile-settings-input-wrapper">
+
+        <input asp-for="PhoneNumber"
+               class="form-input"/>
+
+        <span asp-validation-for="PhoneNumber"
+              class="text-red">
+        </span>
+        
+    </div>
+
+    <button type="submit"
+            class="button button-blue-back">
+        <span lang="en">Save</span>
+        <span lang="ar">حفظ</span>
+    </button>
+
+</div>

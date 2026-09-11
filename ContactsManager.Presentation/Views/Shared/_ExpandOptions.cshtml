@@ -1,0 +1,27 @@
+@model ContactResponseDto
+<details class="expand-menu expand-text-menu">
+    <summary><i class=" text-center fa-solid fa-ellipsis-vertical" style="font-size: 1.2em; width: 0.85em;"></i>
+    </summary>
+    <ul class="expand-list">
+        <li><a asp-controller="Contacts" asp-action="Edit" asp-route-Id="@Model.Id">
+                <i class="fa-solid fa-pen"></i> <span lang="en">Edit</span><span lang="ar">تعديل</span></a>
+        </li>
+        <li><a asp-controller="Contacts" asp-action="Delete" asp-route-Id="@Model.Id">
+                <i class="fa-solid fa-trash"></i> <span lang="en">Delete</span><span lang="ar">حذف</span></a>
+        </li>
+    </ul>
+</details>
+
+<script>
+    document.addEventListener('click', function (event) {
+        const allMenus = document.querySelectorAll('.expand-menu');
+
+        const clickedMenu = event.target.closest('.expand-menu');
+
+        allMenus.forEach(menu => {
+            if (menu !== clickedMenu) {
+                menu.removeAttribute('open');
+            }
+        });
+    });
+</script>

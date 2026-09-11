@@ -1,0 +1,107 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net10.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+      <UserSecretsId>5f3b0dd6-c8e7-4f95-bad1-004152805db3</UserSecretsId>
+  </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\ContactsManager.Application\ContactsManager.Application.csproj" />
+      <ProjectReference Include="..\ContactsManager.Infrastructure\ContactsManager.Infrastructure.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="HtmlSanitizer" Version="9.2.995" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="10.0.11">
+        <PrivateAssets>all</PrivateAssets>
+        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      </PackageReference>
+      <PackageReference Include="Rotativa.AspNetCore" Version="1.4.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <_ContentIncludedByDefault Remove="Views\Settings\Index.cshtml" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Update="Resources\Controllers\ContactsController.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>ContactsController.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Resources\Controllers\ContactsController.ar.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>ContactsController.ar.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Resources\Controllers\AccountController.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>AccountController.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Resources\Controllers\AccountController.ar.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>AccountController.ar.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Resources\SharedResource.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>SharedResouce.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Resources\SharedResource.ar.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>SharedResource.ar.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Resources\Views\Contacts\ContactsPdf.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>ContactsPdf.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Resources\Views\Contacts\ContactsPdf.ar.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>ContactsPdf.ar.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Update="Resources\Controllers\ContactsController.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>ContactsController.resx</DependentUpon>
+      </Compile>
+      <Compile Update="Resources\Controllers\ContactsController.ar.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>ContactsController.ar.resx</DependentUpon>
+      </Compile>
+      <Compile Update="Resources\Controllers\AccountController.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>AccountController.resx</DependentUpon>
+      </Compile>
+      <Compile Update="Resources\Controllers\AccountController.ar.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>AccountController.ar.resx</DependentUpon>
+      </Compile>
+      <Compile Update="Resources\SharedResource.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>SharedResource.resx</DependentUpon>
+      </Compile>
+      <Compile Update="Resources\SharedResource.ar.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>SharedResource.ar.resx</DependentUpon>
+      </Compile>
+      <Compile Update="Resources\Views\Contacts\ContactsPdf.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>ContactsPdf.resx</DependentUpon>
+      </Compile>
+      <Compile Update="Resources\Views\Contacts\ContactsPdf.ar.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>ContactsPdf.ar.resx</DependentUpon>
+      </Compile>
+    </ItemGroup>
+
+</Project>

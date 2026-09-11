@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+            
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+
+    <data name="DefaultError" xml:space="preserve">
+    <value>حدث خطأ غير معروف.</value>
+  </data>
+
+    <data name="ConcurrencyFailure" xml:space="preserve">
+    <value>حدث خطأ بسبب تعديل البيانات في نفس الوقت.</value>
+  </data>
+
+    <data name="PasswordMismatch" xml:space="preserve">
+    <value>كلمة المرور غير صحيحة.</value>
+  </data>
+
+    <data name="InvalidToken" xml:space="preserve">
+    <value>رمز غير صالح.</value>
+  </data>
+
+    <data name="LoginAlreadyAssociated" xml:space="preserve">
+    <value>يوجد مستخدم مرتبط ببيانات تسجيل الدخول هذه بالفعل.</value>
+  </data>
+
+    <data name="UserAlreadyHasPassword" xml:space="preserve">
+    <value>لدى المستخدم كلمة مرور بالفعل.</value>
+  </data>
+
+    <data name="UserLockoutNotEnabled" xml:space="preserve">
+    <value>ميزة قفل الحساب غير مفعّلة لهذا المستخدم.</value>
+  </data>
+
+    <data name="RecoveryCodeRedemptionFailed" xml:space="preserve">
+    <value>تعذر استخدام رمز الاسترداد.</value>
+  </data>
+
+    <data name="PasswordRequiresDigit" xml:space="preserve">
+    <value>يجب أن تحتوي كلمة المرور على رقم واحد على الأقل.</value>
+  </data>
+
+    <data name="PasswordRequiresLower" xml:space="preserve">
+    <value>يجب أن تحتوي كلمة المرور على حرف إنجليزي صغير واحد على الأقل.</value>
+  </data>
+
+    <data name="PasswordRequiresNonAlphanumeric" xml:space="preserve">
+    <value>يجب أن تحتوي كلمة المرور على رمز واحد على الأقل غير حرف أو رقم.</value>
+  </data>
+
+    <data name="PasswordRequiresUpper" xml:space="preserve">
+    <value>يجب أن تحتوي كلمة المرور على حرف إنجليزي كبير واحد على الأقل.</value>
+  </data>
+
+    <data name="PasswordTooShort" xml:space="preserve">
+    <value>يجب ألا تقل كلمة المرور عن {0} أحرف.</value>
+  </data>
+
+    <data name="PasswordRequiresUniqueChars" xml:space="preserve">
+    <value>يجب أن تحتوي كلمة المرور على {0} أحرف مختلفة على الأقل.</value>
+  </data>
+
+    <data name="DuplicateUserName" xml:space="preserve">
+    <value>اسم المستخدم '{0}' مستخدم بالفعل.</value>
+  </data>
+
+    <data name="DuplicateEmail" xml:space="preserve">
+    <value>عنوان البريد الإلكتروني مستخدم بالفعل.</value>
+  </data>
+
+    <data name="InvalidUserName" xml:space="preserve">
+    <value>اسم المستخدم '{0}' غير صالح.</value>
+  </data>
+
+    <data name="InvalidEmail" xml:space="preserve">
+    <value>عنوان البريد الإلكتروني '{0}' غير صالح.</value>
+  </data>
+
+    <data name="DuplicateRoleName" xml:space="preserve">
+    <value>الدور '{0}' موجود بالفعل.</value>
+  </data>
+
+    <data name="InvalidRoleName" xml:space="preserve">
+    <value>اسم الدور '{0}' غير صالح.</value>
+  </data>
+
+    <data name="UserAlreadyInRole" xml:space="preserve">
+    <value>المستخدم عضو بالفعل في دور '{0}'.</value>
+  </data>
+
+    <data name="UserNotInRole" xml:space="preserve">
+    <value>المستخدم ليس عضوًا في دور '{0}'.</value>
+  </data>
+</root>

@@ -1,0 +1,219 @@
+@using System.Globalization
+@using Microsoft.AspNetCore.Mvc.Localization
+@model IEnumerable<ContactResponseDto>
+@inject IViewLocalizer Localizer
+
+@{
+    Layout = null;
+
+    var isArabic = CultureInfo.CurrentUICulture.TwoLetterISOLanguageName == "ar";
+    var direction = isArabic ? "rtl" : "ltr";
+    var language = isArabic ? "ar" : "en";
+}
+
+<!DOCTYPE html>
+
+<!--suppress ALL -->
+<html lang="@language" dir="@direction">
+
+<!--suppress HtmlRequiredTitleElement -->
+<head>
+    <meta charset="utf-8" />
+    <style>
+        @@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;600;700&display=swap');
+
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+
+            background: #ffffff;
+            color: #222222;
+
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 11px;
+        }
+
+        .pdf-container {
+            width: 100%;
+            margin: 0;
+            padding: 15px;
+
+            box-sizing: border-box;
+        }
+
+        .pdf-header {
+            width: 100%;
+            margin-bottom: 18px;
+            padding-bottom: 10px;
+
+            border-bottom: 2px solid #333333;
+        }
+
+        .pdf-header h1 {
+            margin: 0;
+            padding: 0;
+
+            font-size: 22px;
+            font-weight: bold;
+
+            color: #222222;
+        }
+
+        .pdf-table {
+            width: 100%;
+
+            border-collapse: collapse;
+            border-spacing: 0;
+
+            table-layout: fixed;
+
+            font-size: 10px;
+        }
+
+        .pdf-table thead {
+            display: table-header-group;
+        }
+
+        .pdf-table th {
+            padding: 7px 8px;
+
+            text-align: left;
+            vertical-align: middle;
+
+            background-color: #eeeeee;
+            color: #222222;
+
+            border: 1px solid #bdbdbd;
+
+            font-weight: bold;
+
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+
+        .pdf-table td {
+            padding: 7px 8px;
+
+            text-align: left;
+            vertical-align: top;
+
+            border: 1px solid #d0d0d0;
+
+            color: #333333;
+
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            word-break: break-word;
+        }
+
+        .pdf-table tbody tr:nth-child(even) {
+            background-color: #f7f7f7;
+        }
+
+        .pdf-table tr {
+            page-break-inside: avoid;
+        }
+
+        .pdf-table tbody:empty {
+            display: none;
+        }
+
+
+        /* Arabic / RTL */
+
+        .pdf-rtl {
+            direction: rtl;
+
+            font-family:
+                "Tajawal",
+                Arial,
+                Helvetica,
+                sans-serif;
+        }
+
+        .pdf-rtl .pdf-header,
+        .pdf-rtl .pdf-table th,
+        .pdf-rtl .pdf-table td {
+            text-align: right;
+        }
+
+        .pdf-rtl .pdf-table {
+            direction: rtl;
+        }
+
+        /* English / RTL */
+
+        .pdf-ltr {
+            direction: ltr;
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+        }
+
+        .pdf-ltr .pdf-header,
+        .pdf-ltr .pdf-table th,
+        .pdf-ltr .pdf-table td {
+            text-align: left;
+        }
+
+        .pdf-ltr .pdf-table {
+            direction: ltr;
+        }
+    </style>
+</head>
+
+<body class="@(isArabic ? "pdf-rtl" : "pdf-ltr")">
+
+<div class="pdf-container">
+
+    <div class="pdf-header">
+        <h1>@Localizer["Contacts"]</h1>
+    </div>
+
+    <table class="pdf-table">
+
+        <colgroup>
+            <col style="width: 14%;" />
+            <col style="width: 20%;" />
+            <col style="width: 12%;" />
+            <col style="width: 16%;" />
+            <col style="width: 21%;" />
+            <col style="width: 17%;" />
+        </colgroup>
+
+        <thead>
+        <tr>
+            <th>@Localizer["Name"]</th>
+            <th>@Localizer["Email"]</th>
+            <th>@Localizer["Phone"]</th>
+            <th>@Localizer["Company"]</th>
+            <th>@Localizer["Address"]</th>
+            <th>@Localizer["Notes"]</th>
+        </tr>
+        </thead>
+
+        <tbody>
+
+        @foreach (var contact in Model)
+        {
+            <tr>
+                <td>@contact.FullName</td>
+                <td>@contact.Email</td>
+                <td>@contact.PhoneNumber</td>
+                <td>@contact.CompanyName</td>
+                <td>@contact.Address</td>
+                <td>@contact.Notes</td>
+            </tr>
+        }
+
+        </tbody>
+
+    </table>
+
+</div>
+
+</body>
+</html>

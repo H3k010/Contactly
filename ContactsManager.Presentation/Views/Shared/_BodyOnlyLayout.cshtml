@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en" data-current-lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>@ViewBag.Title - Contacts Manager</title>
+
+    <link href="/css/StyleSheet.css" rel="stylesheet"/>
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+          crossorigin="anonymous"
+          referrerpolicy="no-referrer"/>
+</head>
+
+<body>
+<script>
+    (function () {
+        const savedTheme = localStorage.getItem('user-theme') || 'system';
+        if (savedTheme === 'dark' || (savedTheme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.body.classList.add('dark-mode');
+        }
+        const savedLang = localStorage.getItem('user-language') || 'en';
+        const rootHtml = document.documentElement;
+        rootHtml.setAttribute('data-current-lang', savedLang);
+        if (savedLang === 'ar') {
+            rootHtml.setAttribute('dir', 'rtl');
+            rootHtml.setAttribute('lang', 'ar');
+        } else {
+            rootHtml.setAttribute('dir', 'ltr');
+            rootHtml.setAttribute('lang', 'en');
+        }
+    })();
+</script>
+<div class="container">
+    <div class="page-content">
+
+        <main class="body">
+            @RenderBody()
+        </main>
+        
+    </div>
+</div>
+
+<script src="~/js/site.js" asp-append-version="true"></script>
+
+@await RenderSectionAsync("scripts", required: false)
+
+</body>
+</html>

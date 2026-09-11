@@ -1,0 +1,137 @@
+@model ImportViewModel
+@{
+    ViewBag.Title = "Import Contacts";
+    ViewBag.CurrentUrl = "~/contacts";
+}
+
+<div class="flex-1 mb">
+
+    <div class="text-grey">
+        <span lang="en">Contacts</span>
+        <span lang="ar">جهات الاتصال</span>
+        <span lang="en">›</span>
+        <span lang="ar">‹</span>
+        <span lang="en">Import</span>
+        <span lang="ar">استيراد</span>
+    </div>
+
+</div>
+
+<a asp-controller="Contacts"
+   asp-action="Index"
+   class="link-hover no-underline">
+    <span lang="en">← Back to Contacts</span>
+    <span lang="ar">→ العودة إلى جهات الاتصال</span>
+</a>
+
+<br/>
+<br/>
+
+<div class="form-container">
+
+    <h1><span lang="en">Import Contacts</span><span lang="ar">استيراد جهات الاتصال</span></h1>
+
+    <p class="text-grey mb">
+        <span lang="en">Upload a CSV or JSON file to add contacts to your contact list.</span>
+        <span lang="ar">قم بتحميل ملف CSV أو JSON لإضافة جهات اتصال إلى قائمة جهات الاتصال الخاصة بك.</span>
+    </p>
+
+
+    <form asp-action="Import"
+          asp-controller="Contacts"
+          method="post"
+          enctype="multipart/form-data">
+
+
+        <div class="form-field">
+
+            <label class="form-label">
+                <span lang="en">Contact file</span>
+                <span lang="ar">ملف جهة الاتصال</span>
+            </label>
+
+            <input type="file"
+                   name="importedFile"
+                   class="form-input"
+                   accept=".csv,.json"
+                   required/>
+
+        </div>
+
+
+        @if (!string.IsNullOrEmpty(Model.UploadError))
+        {
+            <div class="text-red mb">
+                @Model.UploadError
+            </div>
+        }
+
+
+        @if (!string.IsNullOrEmpty(Model.SuccessUpload))
+        {
+            <div class="text-green mb">
+
+                @Model.SuccessUpload
+
+                @if (Model.ContactsAdded > 0)
+                {
+                    if (Model.ContactsAdded == 1)
+                    {
+                        <div>
+                            <span lang="en">@Model.ContactsAdded contact added.</span>
+                            <span lang="ar">@Model.ContactsAdded.ToArabicNumerals() جهة اتصال مضافة.</span>
+                        </div>
+                    }
+                    else
+                    {
+                        <div>
+                            <span lang="en">@Model.ContactsAdded contacts added.</span>
+                            <span lang="ar">@Model.ContactsAdded.ToArabicNumerals() جهات اتصال مضافة.</span>
+                        </div>
+                    }
+
+                    @if (Model.ContactsFailedToAdd != 0)
+                    {
+                        <div class="text-red">
+                            <span lang="en">@Model.ContactsFailedToAdd invalid.</span>
+                            <span lang="ar">@Model.ContactsFailedToAdd.ToArabicNumerals() غير صالحة.</span>
+                        </div>
+                    }
+                }
+
+            </div>
+        }
+
+        <br>
+
+        <div class="action-row">
+
+            <button type="submit"
+                    class="button button-green-back">
+                <i class="fa-solid fa-upload"></i>
+                <span lang="en">Upload Contacts</span>
+                <span lang="ar">رفع جهات الاتصال</span>
+            </button>
+
+            <a asp-controller="Contacts"
+               asp-action="Index"
+               class="button-link button-gray-back">
+
+                @if (Model.IsSuccess)
+                {
+                    <text><span lang="en">Back</span></text>
+                    <text><span lang="ar">العودة</span></text>
+                }
+                else
+                {
+                    <text><span lang="en">Cancel</span></text>
+                    <text><span lang="ar">إلغاء</span></text>
+                }
+
+            </a>
+
+        </div>
+
+    </form>
+
+</div>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>1.3</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="UserName" xml:space="preserve"><value>اسم المستخدم</value></data>
+  <data name="UserNameRequired" xml:space="preserve"><value>اسم المستخدم مطلوب.</value></data>
+  <data name="Email" xml:space="preserve"><value>البريد الإلكتروني</value></data>
+  <data name="EmailAddress" xml:space="preserve"><value>عنوان البريد الإلكتروني</value></data>
+  <data name="EmailRequired" xml:space="preserve"><value>البريد الإلكتروني مطلوب.</value></data>
+  <data name="EmailFormat" xml:space="preserve"><value>يجب أن يكون البريد الإلكتروني بصيغة صحيحة.</value></data>
+  <data name="PhoneNumber" xml:space="preserve"><value>رقم الهاتف</value></data>
+  <data name="PhoneRequired" xml:space="preserve"><value>رقم الهاتف مطلوب.</value></data>
+  <data name="PhoneInvalid" xml:space="preserve"><value>يجب أن يحتوي رقم الهاتف على أرقام فقط.</value></data>
+  <data name="Password" xml:space="preserve"><value>كلمة المرور</value></data>
+  <data name="PasswordRequired" xml:space="preserve"><value>كلمة المرور مطلوبة.</value></data>
+  <data name="ConfirmPassword" xml:space="preserve"><value>تأكيد كلمة المرور</value></data>
+  <data name="ConfirmPasswordRequired" xml:space="preserve"><value>يرجى تأكيد كلمة المرور.</value></data>
+  <data name="PasswordMismatch" xml:space="preserve"><value>كلمة المرور وتأكيدها غير متطابقتين.</value></data>
+  <data name="CurrentPassword" xml:space="preserve"><value>كلمة المرور الحالية</value></data>
+  <data name="CurrentPasswordRequired" xml:space="preserve"><value>كلمة المرور الحالية مطلوبة.</value></data>
+  <data name="NewPassword" xml:space="preserve"><value>كلمة المرور الجديدة</value></data>
+  <data name="NewPasswordRequired" xml:space="preserve"><value>كلمة المرور الجديدة مطلوبة.</value></data>
+  <data name="PasswordLength" xml:space="preserve"><value>يجب أن تكون كلمة المرور بين 6 و100 حرف.</value></data>
+  <data name="ConfirmPasswordMismatch" xml:space="preserve"><value>كلمة المرور الجديدة وتأكيدها غير متطابقتين.</value></data>
+  <data name="FirstName" xml:space="preserve"><value>الاسم الأول</value></data>
+  <data name="LastName" xml:space="preserve"><value>اسم العائلة</value></data>
+  <data name="Company" xml:space="preserve"><value>الشركة</value></data>
+  <data name="CreatedAt" xml:space="preserve"><value>تاريخ الإنشاء</value></data>
+  <data name="Display25" xml:space="preserve"><value>٢٥</value></data>
+  <data name="Display50" xml:space="preserve"><value>٥٠</value></data>
+  <data name="Display100" xml:space="preserve"><value>١٠٠</value></data>
+  <data name="NoSpacesAllowed" xml:space="preserve"><value>لا يسمح باستخدام المسافات.</value></data>
+  <data name="Required" xml:space="preserve"><value>هذا الحقل مطلوب.</value></data>
+  <data name="StringLength" xml:space="preserve"><value>يجب أن يكون طول الحقل {0} بين {2} و{1} حرفًا.</value></data>
+  <data name="RequiredAttribute_Error" xml:space="preserve"><value>حقل {0} مطلوب.</value></data>
+  <data name="EmailAddressAttribute_Error" xml:space="preserve"><value>حقل {0} ليس عنوان بريد إلكتروني صالحًا.</value></data>
+  <data name="PhoneAttribute_Error" xml:space="preserve"><value>حقل {0} ليس رقم هاتف صالحًا.</value></data>
+  <data name="StringLengthAttribute_Error" xml:space="preserve">  <value>يجب أن يحتوي الحقل {0} على عدد أحرف لا يقل عن {2} ولا يزيد عن {1}.</value></data>
+  <data name="CompareAttribute_Error" xml:space="preserve"><value>لا يتطابق الحقل {0} مع الحقل {1}.</value></data>
+  <data name="RegularExpressionAttribute_Error" xml:space="preserve"><value>حقل {0} ليس بالتنسيق المطلوب.</value></data>
+  <data name="Name" xml:space="preserve">
+    <value>الاسم</value>
+  </data>
+</root>

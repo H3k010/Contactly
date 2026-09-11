@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+                xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral,
+            PublicKeyToken=b77a5c561934e089
+        </value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral,
+            PublicKeyToken=b77a5c561934e089
+        </value>
+    </resheader>
+
+    <data name="ConfirmEmailChange" xml:space="preserve">
+    <value>تأكيد تغيير البريد الإلكتروني</value>
+</data>
+
+    <data name="EnterPasswordToChangeEmail" xml:space="preserve">
+    <value>أدخل كلمة المرور الحالية لتغيير عنوان بريدك الإلكتروني.</value>
+</data>
+
+    <data name="Continue" xml:space="preserve">
+    <value>تابع</value>
+</data>
+
+    <data name="Save" xml:space="preserve">
+        <value>حفظ</value>
+    </data>
+
+    <data name="ConfirmPasswordChange" xml:space="preserve">
+    <value>تأكيد تغيير كلمة المرور</value>
+</data>
+
+    <data name="EnterPasswordToChangePassword" xml:space="preserve">
+    <value>أدخل كلمة المرور الحالية لتغيير كلمة المرور الخاصة بك.</value>
+</data>
+
+    <data name="ConfirmAccountDeletion" xml:space="preserve">
+    <value>تأكيد حذف الحساب</value>
+</data>
+
+    <data name="ConfirmAccountDeletionMessage" xml:space="preserve">
+    <value>هل أنت متأكد أنك تريد حذف حسابك؟ أدخل كلمة المرور لتأكيد حذف حسابك نهائيًا.</value>
+</data>
+
+    <data name="DeleteAccount" xml:space="preserve">
+    <value>حذف الحساب</value>
+</data>
+    <data name="ChangePassword" xml:space="preserve">
+        <value>تغيير كلمة السر</value>
+    </data>
+</root>

@@ -1,0 +1,74 @@
+@model LoginDto
+@{
+ ViewBag.Title = "Login";
+ ViewBag.CurrentUrl = "~/Account/Login";
+}
+
+<div class="form-container">
+ <span lang="en">Not yet registered?</span>
+ <span lang="ar">لم تقم بالتسجيل بعد؟</span>
+ <a asp-action="Register" asp-controller="Account" class="link-hover no-underline">
+  <span lang="en">Register</span>
+  <span lang="ar">تسجيل</span>
+ </a>
+ <h2 class="text-large"><span lang="en">Login</span><span lang="ar">تسجيل الدخول</span></h2>
+
+ <form asp-controller="Account" asp-action="Login" asp-route-ReturnUrl="@Context.Request.Query["ReturnUrl"]"
+       method="post">
+
+  @*Email*@
+  <div class="form-field flex">
+   <div class="w-25">
+    <label asp-for="Email" class="form-label pt">
+     <span lang="en">Email</span><span lang="ar">البريد الإلكترونى</span>
+    </label>
+   </div>
+   <div class="flex-1">
+    <input asp-for="Email" class="form-input"/>
+    <span asp-validation-for="Email" class="text-red"></span>
+   </div>
+  </div>
+
+  @*Password*@
+  <div class="form-field flex">
+   <div class="w-25">
+    <label asp-for="Password" class="form-label pt">
+     <span lang="en">Password</span><span lang="ar">كلمة المرور</span>
+    </label>
+   </div>
+   <div class="flex-1">
+    <input asp-for="Password" class="form-input"/>
+    <span asp-validation-for="Password" class="text-red"></span>
+   </div>
+  </div>
+
+  <div class="text-right mb-15">
+   <a asp-controller="Account" asp-action="Forgot-Password" class="link-hover no-underline">
+    <span lang="en">Forgot Password?</span>
+    <span lang="ar">نسيت كلمة المرور؟</span>
+   </a>
+  </div>
+
+  @* Login button + Remember Me *@
+  <div class="text-center">
+   <button class="button button-green-back" type="submit">
+    <span lang="en">Login</span><span lang="ar">تسجيل الدخول</span>
+   </button>
+
+   <input asp-for="RememberMe" checked class="form-input-single-checkbox"/>
+
+   <label asp-for="RememberMe">
+    <span lang="en">Keep me signed in</span>
+    <span lang="ar">ابقى مسجلاً</span>
+   </label>
+
+   <div asp-validation-summary="ModelOnly" class="text-red"></div>
+  </div>
+
+ </form>
+</div>
+
+@section scripts
+{
+ <partial name="_ValidationScriptsPartial"/>
+}

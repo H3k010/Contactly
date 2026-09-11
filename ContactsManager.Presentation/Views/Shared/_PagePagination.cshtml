@@ -1,0 +1,221 @@
+@model ContactsViewModel
+<div class="text-center">
+    @if (Model.FilteredContactsCount > Model.CurrentPageSize)
+    {
+        var totalPages = Convert.ToInt32(Math.Ceiling((double)Model.FilteredContactsCount / Model.CurrentPageSize));
+        var leftBracketCreated = false;
+        var rightBracketCreated = false;
+
+        for (var i = 1; i <= totalPages; i++)
+        {
+            var pageNumber = i;
+            if (!leftBracketCreated)
+            {
+                if (Model.CurrentPageNumber > 1)
+                {
+                    <a asp-controller="Contacts" asp-action="Index"
+                       asp-route-searchBy="@ViewBag.CurrentSearchBy"
+                       asp-route-searchString="@ViewBag.CurrentSearchString"
+                       asp-route-sortBy="@ViewBag.CurrentSortBy"
+                       asp-route-sortOrder="@ViewBag.CurrentSortOrder"
+                       asp-route-pageNumber="@(Model.CurrentPageNumber - 1)"
+                       asp-route-pageSize="@Model.CurrentPageSize" class="link-hover no-underline m">
+                        <span lang="en"><i class="fas fa-chevron-left"></i></span>
+                        <span lang="ar"><i class="fas fa-chevron-right"></i></span>
+                    </a>
+                }
+                else
+                {
+                    <span lang="en"><i class="fas fa-chevron-left"></i></span>
+                    <span lang="ar"><i class="fas fa-chevron-right"></i></span>
+                }
+
+                leftBracketCreated = true;
+            }
+
+            if (totalPages < 5)
+            {
+                if (pageNumber == Model.CurrentPageNumber)
+                {
+                    <a asp-controller="Contacts" asp-action="Index"
+                       asp-route-searchBy="@ViewBag.CurrentSearchBy"
+                       asp-route-searchString="@ViewBag.CurrentSearchString"
+                       asp-route-sortBy="@ViewBag.CurrentSortBy"
+                       asp-route-sortOrder="@ViewBag.CurrentSortOrder"
+                       asp-route-pageNumber="@pageNumber"
+                       asp-route-pageSize="@Model.CurrentPageSize" class="link-hover no-underline m">
+                        <strong lang="en">@pageNumber</strong>
+                        <strong lang="ar">@pageNumber.ToArabicNumerals()</strong>
+                    </a>
+                }
+                else
+                {
+                    <a asp-controller="Contacts" asp-action="Index"
+                       asp-route-searchBy="@ViewBag.CurrentSearchBy"
+                       asp-route-searchString="@ViewBag.CurrentSearchString"
+                       asp-route-sortBy="@ViewBag.CurrentSortBy"
+                       asp-route-sortOrder="@ViewBag.CurrentSortOrder"
+                       asp-route-pageNumber="@pageNumber"
+                       asp-route-pageSize="@Model.CurrentPageSize" class="link-hover no-underline m">
+                        <span lang="en">@pageNumber</span>
+                        <span lang="ar">@pageNumber.ToArabicNumerals()</span>
+                    </a>
+                }
+            }
+
+            else
+            {
+                if (pageNumber == 1 && Model.CurrentPageNumber > 3)
+                {
+                    if (Model.CurrentPageNumber == pageNumber + 3)
+                    {
+                        <a asp-controller="Contacts" asp-action="Index"
+                           asp-route-searchBy="@ViewBag.CurrentSearchBy"
+                           asp-route-searchString="@ViewBag.CurrentSearchString"
+                           asp-route-sortBy="@ViewBag.CurrentSortBy"
+                           asp-route-sortOrder="@ViewBag.CurrentSortOrder"
+                           asp-route-pageNumber="@pageNumber"
+                           asp-route-pageSize="@Model.CurrentPageSize" class="link-hover no-underline m">
+                            <span lang="en">@pageNumber</span>
+                            <span lang="ar">@pageNumber.ToArabicNumerals()</span>
+                        </a>
+                    }
+
+                    else if (pageNumber == Model.CurrentPageNumber)
+                    {
+                        <a asp-controller="Contacts" asp-action="Index"
+                           asp-route-searchBy="@ViewBag.CurrentSearchBy"
+                           asp-route-searchString="@ViewBag.CurrentSearchString"
+                           asp-route-sortBy="@ViewBag.CurrentSortBy"
+                           asp-route-sortOrder="@ViewBag.CurrentSortOrder"
+                           asp-route-pageNumber="@pageNumber"
+                           asp-route-pageSize="@Model.CurrentPageSize" class="link-hover no-underline m">
+                            <strong lang="en">@pageNumber</strong>
+                            <strong lang="ar">@pageNumber.ToArabicNumerals()</strong>
+                        </a>
+
+                        <span>..</span>
+                    }
+                    else
+                    {
+                        <a asp-controller="Contacts" asp-action="Index"
+                           asp-route-searchBy="@ViewBag.CurrentSearchBy"
+                           asp-route-searchString="@ViewBag.CurrentSearchString"
+                           asp-route-sortBy="@ViewBag.CurrentSortBy"
+                           asp-route-sortOrder="@ViewBag.CurrentSortOrder"
+                           asp-route-pageNumber="@pageNumber"
+                           asp-route-pageSize="@Model.CurrentPageSize" class="link-hover no-underline m">
+                            <text lang="en">@pageNumber</text>
+                            <text lang="ar">@pageNumber.ToArabicNumerals()</text>
+                        </a>
+
+                        <span>..</span>
+                    }
+                }
+                else if (pageNumber == totalPages && Model.CurrentPageNumber <= totalPages - 3)
+                {
+                    if (Model.CurrentPageNumber == totalPages - 3)
+                    {
+                        <a asp-controller="Contacts" asp-action="Index"
+                           asp-route-searchBy="@ViewBag.CurrentSearchBy"
+                           asp-route-searchString="@ViewBag.CurrentSearchString"
+                           asp-route-sortBy="@ViewBag.CurrentSortBy"
+                           asp-route-sortOrder="@ViewBag.CurrentSortOrder"
+                           asp-route-pageNumber="@pageNumber"
+                           asp-route-pageSize="@Model.CurrentPageSize" class="link-hover no-underline m">
+                            <text lang="en">@pageNumber</text>
+                            <text lang="ar">@pageNumber.ToArabicNumerals()</text>
+                        </a>
+                    }
+
+                    else if (pageNumber == Model.CurrentPageNumber)
+                    {
+                        <span>..</span>
+
+                        <a asp-controller="Contacts" asp-action="Index"
+                           asp-route-searchBy="@ViewBag.CurrentSearchBy"
+                           asp-route-searchString="@ViewBag.CurrentSearchString"
+                           asp-route-sortBy="@ViewBag.CurrentSortBy"
+                           asp-route-sortOrder="@ViewBag.CurrentSortOrder"
+                           asp-route-pageNumber="@pageNumber"
+                           asp-route-pageSize="@Model.CurrentPageSize" class="link-hover no-underline m">
+                            <strong lang="en">@pageNumber</strong>
+                            <strong lang="ar">@pageNumber.ToArabicNumerals()</strong>
+                        </a>
+                    }
+                    else
+                    {
+                        <span>..</span>
+
+                        <a asp-controller="Contacts" asp-action="Index"
+                           asp-route-searchBy="@ViewBag.CurrentSearchBy"
+                           asp-route-searchString="@ViewBag.CurrentSearchString"
+                           asp-route-sortBy="@ViewBag.CurrentSortBy"
+                           asp-route-sortOrder="@ViewBag.CurrentSortOrder"
+                           asp-route-pageNumber="@pageNumber"
+                           asp-route-pageSize="@Model.CurrentPageSize" class="link-hover no-underline m">
+                            <text lang="en">@pageNumber</text>
+                            <text lang="ar">@pageNumber.ToArabicNumerals()</text>
+                        </a>
+                    }
+                }
+                else if (Model.CurrentPageNumber - 3 < pageNumber && pageNumber < Model.CurrentPageNumber + 3)
+                {
+                    if (pageNumber == Model.CurrentPageNumber)
+                    {
+                        <a asp-controller="Contacts" asp-action="Index"
+                           asp-route-searchBy="@ViewBag.CurrentSearchBy"
+                           asp-route-searchString="@ViewBag.CurrentSearchString"
+                           asp-route-sortBy="@ViewBag.CurrentSortBy"
+                           asp-route-sortOrder="@ViewBag.CurrentSortOrder"
+                           asp-route-pageNumber="@pageNumber"
+                           asp-route-pageSize="@Model.CurrentPageSize" class="link-hover no-underline m">
+                            <strong lang="en">@pageNumber</strong>
+                            <strong lang="ar">@pageNumber.ToArabicNumerals()</strong>
+                        </a>
+                    }
+                    else
+                    {
+                        <a asp-controller="Contacts" asp-action="Index"
+                           asp-route-searchBy="@ViewBag.CurrentSearchBy"
+                           asp-route-searchString="@ViewBag.CurrentSearchString"
+                           asp-route-sortBy="@ViewBag.CurrentSortBy"
+                           asp-route-sortOrder="@ViewBag.CurrentSortOrder"
+                           asp-route-pageNumber="@pageNumber"
+                           asp-route-pageSize="@Model.CurrentPageSize" class="link-hover no-underline m">
+                            <text lang="en">@pageNumber</text>
+                            <text lang="ar">@pageNumber.ToArabicNumerals()</text>
+                        </a>
+                    }
+                }
+            }
+
+            if (pageNumber == totalPages && !rightBracketCreated)
+            {
+                if (Model.CurrentPageNumber < totalPages)
+                {
+                    <a asp-controller="Contacts" asp-action="Index"
+                       asp-route-searchBy="@ViewBag.CurrentSearchBy"
+                       asp-route-searchString="@ViewBag.CurrentSearchString"
+                       asp-route-sortBy="@ViewBag.CurrentSortBy"
+                       asp-route-sortOrder="@ViewBag.CurrentSortOrder"
+                       asp-route-pageNumber="@(Model.CurrentPageNumber + 1)"
+                       asp-route-pageSize="@Model.CurrentPageSize" class="link-hover no-underline m">
+                        <span lang="en"><i class="fas fa-chevron-right"></i></span>
+                        <span lang="ar"><i class="fas fa-chevron-left"></i></span>
+                    </a>
+                }
+                else
+                {
+                    <span lang="en"><i class="fas fa-chevron-right"></i></span>
+                    <span lang="ar"><i class="fas fa-chevron-left"></i></span>
+                }
+
+                rightBracketCreated = true;
+            }
+        }
+
+        <span class="m" lang="en">Showing @Model.CurrentPageSize of @Model.FilteredContactsCount contacts</span>
+        <span class="m" lang="ar">اظهار @Model.CurrentPageSize.ToArabicNumerals() من @Model.FilteredContactsCount.ToArabicNumerals()</span>
+    }
+</div>

@@ -1,0 +1,122 @@
+@model ContactResponseDto
+
+@{
+    ViewBag.Title = "Delete Contact";
+    ViewBag.CurrentUrl = "~/contacts";
+}
+
+<div class="flex-1 mb">
+
+    <div class="text-grey">
+        <span lang="en">Contacts</span>
+        <span lang="ar">جهات الاتصال</span>
+        <span lang="en">›</span>
+        <span lang="ar">‹</span>
+        <span lang="en">Delete</span>
+        <span lang="ar">حذف</span>
+    </div>
+
+</div>
+
+<a asp-controller="Contacts"
+   asp-action="Index"
+   class="link-hover no-underline">
+    <span lang="en">← Back to Contacts</span>
+    <span lang="ar">→ العودة إلى جهات الاتصال</span>
+</a>
+
+<br />
+<br />
+
+<div class="page-form">
+    
+    <h1><span lang="en">Delete Contact</span><span lang="ar">حذف جهة الاتصال</span></h1>
+
+    <p class="text-red mb">
+        <span lang="en">Are you sure you want to delete this contact?</span>
+        <span lang="ar">هل أنت متأكد أنك تريد حذف جهة الاتصال هذه؟</span>
+    </p>
+
+
+    <div class="form-field flex">
+
+        <div class="w-25">
+            <label class="form-label">
+                <span lang="en">Name</span>
+                <span lang="ar">الاسم</span>
+            </label>
+        </div>
+
+        <div class="flex-1">
+            <input asp-for="FullName"
+                   readonly
+                   class="form-input no-box-input" />
+        </div>
+
+    </div>
+
+
+    <div class="form-field flex">
+
+        <div class="w-25">
+            <label class="form-label">
+                <span lang="en">Email</span>
+                <span lang="ar">البريد الإلكتروني</span>
+            </label>
+        </div>
+
+        <div class="flex-1">
+            <input asp-for="Email"
+                   type="email"
+                   readonly
+                   class="form-input no-box-input" />
+        </div>
+
+    </div>
+
+
+    <div class="form-field flex">
+
+        <div class="w-25">
+            <label class="form-label">
+                <span lang="en">Phone Number</span>
+                <span lang="ar">رقم الهاتف</span>
+            </label>
+        </div>
+
+        <div class="flex-1">
+            <input asp-for="PhoneNumber"
+                   readonly
+                   class="form-input no-box-input" />
+        </div>
+
+    </div>
+
+
+    <form asp-controller="Contacts"
+          asp-action="Delete"
+          method="post"
+          asp-route-id="@Model.Id">
+
+        <input asp-for="Id" type="hidden" />
+
+        <div class="action-row mt">
+
+            <button type="submit"
+                    class="button button-red-back">
+                <span lang="en">Delete Contact</span>
+                <span lang="ar">حذف جهة الاتصال</span>
+            </button>
+
+            <a asp-controller="Contacts"
+               asp-action="Index"
+               class="button-link button-gray-back">
+                <span lang="en">Cancel</span>
+                <span lang="ar">إلغاء</span>
+            </a>
+
+        </div>
+
+    </form>
+
+</div>

@@ -1,0 +1,20 @@
+﻿@model ErrorViewModel
+@{
+    Layout = "_BodyOnlyLayout";
+    ViewData["Title"] = "Error";
+}
+
+<div class="text-center">
+
+    <h1 class="text-red"><span lang="en">Error.</span>
+        <span lang="ar">خطأ.</span></h1>
+    <h2 class="text-red"><span lang="en">An error occurred while processing your request.</span>
+        <span lang="ar">حدث خطأ أثناء معالجة طلبك.</span></h2>
+
+    @if (Model.ShowRequestId)
+    {
+        <p>
+            <strong>Request ID:</strong> <code>@Model.RequestId</code>
+        </p>
+    }
+</div>

@@ -1,0 +1,159 @@
+﻿@{
+    ViewBag.Title = "Home";
+    ViewBag.CurrentUrl = "~/";
+}
+
+<div class="page-content">
+    <div class="container">
+
+        <div class="w-100 text-center mb">
+            <h1 class="text-large"><span lang="en">Welcome to Contactly</span><span
+                    lang="ar">مرحبا بك في كونتاكتلى</span></h1>
+
+            <p class="medium-text text-grey">
+                <span lang="en">A simple and secure way to keep your contacts organized.</span>
+                <span lang="ar">طريقة بسيطة وآمنة لتنظيم جهات اتصالك.</span>
+            </p>
+
+            <p>
+                <span lang="en">Store, manage, and access your contacts all in one place.</span>
+                <span lang="ar">احفظ، إدارة، وصول إلى جهات اتصالك في مكان واحد.</span>
+            </p>
+
+            <div class="mt">
+                <a asp-controller="Contacts"
+                   asp-action="Index"
+                   class="button-link btn-primary">
+                    <i class="fa-solid fa-address-book"></i>
+                    <span lang="en">View Contacts</span><span lang="ar">عرض جهات الاتصال</span>
+                </a>
+
+                @if (!(User.Identity?.IsAuthenticated ?? false))
+                {
+                    <a asp-controller="Account"
+                       asp-action="Register"
+                       class="button-link btn-secondary">
+                        <i class="fa-solid fa-user-plus"></i>
+                        <span lang="en">Create an Account</span><span lang="ar">إنشاء حساب</span>
+                    </a>
+                }
+            </div>
+        </div>
+
+        <div class="w-100 mb">
+            <div class="text-center mb-15">
+                <h2><span lang="en">Why Contactly?</span><span lang="ar">لماذا كونتاكتلى؟</span></h2>
+                <p class="text-grey">
+                    <span lang="en">Everything you need to keep your contacts organized.</span>
+                    <span lang="ar">كل ما تحتاجه لتنظيم جهات اتصالك.</span>
+                </p>
+            </div>
+
+            <div class="card-container">
+
+                <div class="card">
+                    <h3>
+                        <i class="fa-solid fa-address-book text-blue"></i>
+                        <span lang="en">Organize Your Contacts</span>
+                        <span lang="ar">نظم جهات اتصالك</span>
+                    </h3>
+
+                    <p>
+                        <span lang="en">Keep your contact information neatly organized</span>
+                        <span lang="ar">احتفظ بمعلومات جهات الاتصال الخاصة بك منظمة</span>
+                        <span lang="en">and easy to access whenever you need it.</span>
+                        <span lang="ar">وسهل الوصول إليها عندما تحتاجها.</span>
+                    </p>
+                </div>
+
+                <div class="card">
+                    <h3>
+                        <i class="fa-solid fa-magnifying-glass text-blue"></i>
+                        <span lang="en">Find What You Need</span>
+                        <span lang="ar">ابحث عن ما تحتاجه</span>
+                    </h3>
+
+                    <p>
+                        <span lang="en">Quickly find the contacts you're looking for</span>
+                        <span lang="ar">ابحث بسرعة عن جهات الاتصال التي تبحث عنها</span>
+                        <span lang="en">without digging through scattered information.</span>
+                        <span lang="ar">دون الحاجة لتصفح المعلومات الموزعة.</span>
+                    </p>
+                </div>
+
+                <div class="card">
+                    <h3>
+                        <i class="fa-solid fa-shield-halved text-blue"></i>
+                        <span lang="en">Simple & Secure</span>
+                        <span lang="ar">بسيط وأمن</span>
+                    </h3>
+
+                    <p>
+                        <span lang="en">Contactly is built to provide a straightforward</span>
+                        <span lang="ar">تم بناء كونتاكتلي لتقديم تجربة واضحة</span>
+                        <span lang="en">experience while keeping your account protected.</span>
+                        <span lang="ar">مع الحفاظ على حسابك محمياً.</span>
+                    </p>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="w-100 text-center">
+            <div class="card-container">
+
+                @if (User.Identity?.IsAuthenticated ?? false)
+                {
+                    <div class="welcome-card w-100 center-box">
+                        <h2><span lang="en">Welcome back!</span><span lang="ar">مرحباً بعودتك!</span></h2>
+
+                        <p>
+                            <span
+                                lang="en">Your contacts are ready and waiting. Continue managing your contact list.</span>
+                            <span lang="ar">جهات اتصالك جاهزة ومُنتظرة. واصل إدارة قائمتك.</span>
+                        </p>
+
+                        <a asp-controller="Contacts"
+                           asp-action="Index"
+                           class="button-link btn-primary mt">
+                            <i class="fa-solid fa-arrow-right"></i>
+                            <span lang="en">Go to My Contacts</span>
+                            <span lang="ar">اذهب إلى جهات اتصالي</span>
+                        </a>
+                    </div>
+                }
+                else
+                {
+                    <div class="card w-100">
+                        <h2><span lang="en">Ready to Get Started?</span><span lang="ar">هل أنت مستعد للبدء؟</span></h2>
+
+                        <p>
+                            <span
+                                lang="en">Create your Contactly account and start organizing your contacts today.</span>
+                            <span lang="ar">أنشئ حساب كونتاكتلي وابدأ في تنظيم جهات اتصالك اليوم.</span>
+                        </p>
+
+                        <a asp-controller="Account"
+                           asp-action="Register"
+                           class="button-link btn-primary mt">
+                            <i class="fa-solid fa-user-plus"></i>
+                            <span lang="en">Get Started</span><span lang="ar">ابدأ</span>
+                        </a>
+
+                        <p class="mt">
+                            <span lang="en">Already have an account?</span><span lang="ar">هل لديك حساب بالفعل؟</span>
+                            <a asp-controller="Account"
+                               asp-action="Login"
+                               class="no-underline">
+                                <span lang="en">Sign in</span><span lang="ar">تسجيل الدخول</span>
+                            </a>
+                        </p>
+                    </div>
+                }
+
+            </div>
+        </div>
+
+    </div>
+
+</div>

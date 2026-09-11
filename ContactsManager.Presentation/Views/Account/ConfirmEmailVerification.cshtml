@@ -1,0 +1,24 @@
+@{
+    Layout = "_BodyOnlyLayout";
+    ViewBag.Title = "Email Verification";
+}
+
+
+<div style="text-align: center;">
+    @if (TempData["EmailConfirmed"] as bool? == true)
+    {
+        <p class="text-center">
+            <span class="text-green">@TempData["ConfirmMessageSuccess"]</span>
+            <span lang="ar"> العودة إلى <a asp-controller="Home" asp-action="Index">الصفحة الرئيسية</a></span>
+            <span lang="en">Return to <a asp-controller="Home" asp-action="Index">main page</a></span>
+        </p>
+    }
+    else
+    {
+        <p class="text-center">
+            @TempData["ConfirmMessageFail`"]
+            <span lang="ar"> العودة إلى <a asp-controller="Home" asp-action="Index">الصفحة الرئيسية</a></span>
+            <span lang="en">Return to <a asp-controller="Home" asp-action="Index">main page</a> </span>
+        </p>
+    }
+</div>

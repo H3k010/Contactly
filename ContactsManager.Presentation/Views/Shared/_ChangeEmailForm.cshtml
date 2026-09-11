@@ -1,0 +1,55 @@
+@model ChangeEmailDto
+@inject IStringLocalizer<SharedResource> Localizer
+<div class="profile-settings-field-content">
+
+    <label asp-for="Email"
+           class="form-label">
+        <span lang="en">Email</span>
+        <span lang="ar">البريد الإلكتروني</span>
+    </label>
+
+    <p class="text-grey">
+        <span lang="en">The email address associated with your account</span>
+        <span lang="ar">عنوان البريد الإلكتروني المرتبط بحسابك</span>
+    </p>
+
+    <p class="text-grey" style="font-size: 0.8rem">
+        <span lang="en">(Updating the email will require verification)</span>
+        <span lang="ar">(سيتطلب تحديث البريد الإلكتروني التحقق)</span>
+    </p>
+
+</div>
+
+<div class="profile-settings-field-control">
+
+    <div class="profile-settings-input-wrapper">
+
+        <input asp-for="Email"
+               class="form-input"/>
+
+        <span asp-validation-for="Email"
+              class="text-red">
+        </span>
+
+        @if (ViewBag.EmailSent as bool? == true)
+        {
+            <span class="text-blue">@ViewBag.Message</span>
+        }
+        else
+        {
+            <span class="text-blue">@ViewBag.Message</span>
+        }
+        
+    </div>
+
+    <button type="button"
+            data-action="ChangeEmail"
+            data-title="@Localizer["ConfirmEmailChange"]"
+            data-message="@Localizer["EnterPasswordToChangeEmail"]"
+            data-submit-text="@Localizer["Continue"]"
+            onclick="submitSensitiveForm(this)"
+            class="button button-blue-back">
+        @Localizer["Save"]
+    </button>
+
+</div>

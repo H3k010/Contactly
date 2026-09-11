@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en" data-current-lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>@ViewBag.Title - Contactly</title>
+
+    <link href="/css/StyleSheet.css" rel="stylesheet"/>
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+          crossorigin="anonymous"
+          referrerpolicy="no-referrer"/>
+</head>
+
+<body>
+<script>
+    (function () {
+        const savedTheme = localStorage.getItem('user-theme') || 'system';
+        if (savedTheme === 'dark' || (savedTheme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.body.classList.add('dark-mode');
+        }
+        const savedLang = localStorage.getItem('user-language') || 'en';
+        const rootHtml = document.documentElement;
+        rootHtml.setAttribute('data-current-lang', savedLang);
+        if (savedLang === 'ar') {
+            rootHtml.setAttribute('dir', 'rtl');
+            rootHtml.setAttribute('lang', 'ar');
+        } else {
+            rootHtml.setAttribute('dir', 'ltr');
+            rootHtml.setAttribute('lang', 'en');
+        }
+    })();
+</script>
+<div class="container">
+    <div class="page-content">
+
+        <header class="margin-bottom">
+
+            <div id="top-bar-div">
+
+                <div class="app-title-container">
+                    <h1 class="app-title">
+                        <!--suppress CheckImageSize -->
+                        <img src="~/favicon.ico" asp-append-version="true" width="35" height="35" alt="Contactly Logo"/>
+                        <span lang="en">Contactly</span>
+                        <span lang="ar">كونتاكتلى</span>
+                    </h1>
+                </div>
+
+                <nav class="title-navbar">
+
+                    <a asp-controller="Home"
+                       asp-action="Index"
+                       class="title-navbar-link @(ViewBag.CurrentUrl == "~/" ? "nav-active" : "")">
+                        <span lang="en">Home</span><span lang="ar">الرئيسية</span>
+                    </a>
+
+                    <a asp-controller="Contacts"
+                       asp-action="Index"
+                       class="title-navbar-link @(ViewBag.CurrentUrl == "~/contacts" ? "nav-active" : "")">
+                        <span lang="en">Contacts</span><span lang="ar">جهات الاتصال</span>
+                    </a>
+
+                </nav>
+
+                <div class="flex-1" id="search-box-div">
+
+                    <nav class="navbar account-links">
+                        <ul>
+
+                            <li>
+                                <a asp-controller="Home"
+                                   asp-action="Settings"
+                                   class="title-navbar-link @(ViewBag.CurrentUrl == "~/settings" ? "nav-active" : "")">
+                                    <span lang="en">Settings</span><span lang="ar">الإعدادات</span>
+                                </a>
+                            </li>
+
+                            @if (User.Identity?.IsAuthenticated == true)
+                            {
+                                <li>
+                                    <span class="text-green">
+                                        <strong>&#64;@User.Identity?.Name</strong>
+                                    </span>
+                                </li>
+
+                                <li>
+                                    <a asp-controller="Account"
+                                       asp-action="Logout"
+                                       class="title-navbar-link">
+                                        <span lang="en">Logout</span><span lang="ar">تسجيل الخروج</span>
+                                    </a>
+                                </li>
+                            }
+                            else
+                            {
+                                <li>
+                                    <a asp-controller="Account"
+                                       asp-action="Register"
+                                       class="title-navbar-link @(ViewBag.CurrentUrl == "~/Account/Register" ? "nav-active" : "")">
+                                        <span lang="en">Register</span><span lang="ar">إنشاء حساب</span>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a asp-controller="Account"
+                                       asp-action="Login"
+                                       class="title-navbar-link @(ViewBag.CurrentUrl == "~/Account/Login" ? "nav-active" : "")">
+                                        <span lang="en">Login</span><span lang="ar">تسجيل الدخول</span>
+                                    </a>
+                                </li>
+                            }
+
+                        </ul>
+                    </nav>
+
+                </div>
+
+            </div>
+
+        </header>
+
+        <main class="body">
+            @RenderBody()
+        </main>
+
+    </div>
+</div>
+
+<script src="~/js/site.js" asp-append-version="true"></script>
+
+@await RenderSectionAsync("scripts", required: false)
+
+</body>
+</html>

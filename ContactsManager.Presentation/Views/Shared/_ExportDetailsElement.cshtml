@@ -1,0 +1,28 @@
+<details id="exportMenu" class="export-text-menu">
+    <summary>
+        <span lang="en">Export</span>
+        <span lang="ar">تصدير</span>
+        <span class="arrow">▼</span>
+    </summary>
+    <ul class="export-list">
+        <li><a asp-controller="Contacts" asp-action="Export" asp-route-format="pdf" onclick="closeMenu()">PDF</a></li>
+        <li><a asp-controller="Contacts" asp-action="Export" asp-route-format="csv" onclick="closeMenu()">CSV</a></li>
+        <li><a asp-controller="Contacts" asp-action="Export" asp-route-format="json" onclick="closeMenu()">JSON</a></li>
+    </ul>
+</details>
+
+<script>
+    function closeMenu() {
+        const menu = document.getElementById('exportMenu');
+        menu.removeAttribute('open');
+    }
+    
+    document.addEventListener('click', function(event) {
+        const menu = document.getElementById('exportMenu');
+        const isClickInside = menu.contains(event.target);
+
+        if (!isClickInside) {
+            menu.removeAttribute('open');
+        }
+    });
+</script>

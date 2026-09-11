@@ -1,0 +1,24 @@
+# Rider / JetBrains
+.idea/
+*.DotSettings.user
+
+# .NET build output
+[Bb]in/
+[Oo]bj/
+
+# ASP.NET Core configuration
+**/appsettings.Production.json
+**/appsettings.Development.json
+
+**/Properties/launchSettings.json
+
+# Visual Studio / user-specific files
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# OS files
+.DS_Store
+Thumbs.db
