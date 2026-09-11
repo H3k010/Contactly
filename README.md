@@ -8,7 +8,7 @@ The application is built with C# and .NET 10, using ASP.NET Core MVC, Razor View
 
 https://contactly.runasp.net
 
-Project Structure
+## Project Structure
 
 The project is organized into four main layers: Presentation handles the MVC interface, Application contains the application logic, Domain contains the core models and rules, and Infrastructure handles database access and other external services.
 
