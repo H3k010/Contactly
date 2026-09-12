@@ -19,3 +19,7 @@ User accounts are protected with ASP.NET Core Identity, and sensitive account ac
 ## Data Management
 
 Contactly uses MySQL to store application data and Entity Framework Core to manage communication between the application and the database. Contacts can also be imported and exported for easier data management.
+
+## Localization
+
+The application is available in English and Arabic. Users can change the language from the application, and Arabic pages use a right-to-left layout.
